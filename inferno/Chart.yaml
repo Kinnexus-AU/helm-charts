@@ -1,5 +1,5 @@
 apiVersion: v2
-name: inferno-helmd
+name: inferno
 description: Inferno Helm Chart
 icon: hhttps://static-00.iconduck.com/assets.00/fire-icon-1513x2048-1ztytpky.png # might be too large
 

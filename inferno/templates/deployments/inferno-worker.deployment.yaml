@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inferno-worker
+  namespace: {{ .Values.namespace }}
+  annotations:
+    reloader.stakater.com/auto: "true"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: inferno-worker
+  template:
+    metadata:
+      labels:
+        app: inferno-worker
+    spec:
+      nodeSelector:
+        kubernetes.io/arch: amd64
+      containers:
+      - name: inferno-worker
+        image: {{ .Values.inferno.imageUrl }}
+        command: ["bundle", "exec", "sidekiq", "-r", "./worker.rb"]
+        imagePullPolicy: Always
+        envFrom:
+        - configMapRef:
+            name: inferno
+        - configMapRef:
+            name: postgresql-configmap
+        - secretRef:
+            name: postgresql-secret        
+        resources:
+          requests: # defaults to 1m CPU and 2919Mi Memory if not specified, might be a memory leak since it tries to consume all memory on node
+            memory: "512Mi"   # Minimum memory required for scheduling
+            cpu: "250m"       # Minimum CPU required for scheduling
+          limits:
+            memory: "1Gi"     # Maximum memory usage allowed
+            cpu: "500m"       # Maximum CPU usage allowed
+ 

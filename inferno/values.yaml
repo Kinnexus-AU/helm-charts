@@ -1,0 +1,38 @@
+ingress:
+  hostnames:
+    - example.inferno.sparked-fhir.com
+    - example.inferno.hl7.org.au
+
+redirectIngress:
+  enabled: false
+  hostnames: []
+  targetUrl: ""
+
+inferno:
+  imageUrl: "ghcr.io/hl7au/au-fhir-inferno:68270162fcc1997a9ffac63c78530921bf0f32cf"
+  terminologyServer: "https://tx.dev.hl7.org.au/fhir"
+  externalValidatorUrl: null  # This can be overridden during chart deployment
+  validatorImageUri: "markiantorno/validator-wrapper:1.0.68"
+
+controller:
+  enabled: false # Set to true to enable the ingress controller if you have not already installed it, multiple ingress controllers can be installed via https://kubernetes.github.io/ingress-nginx/user-guide/multiple-ingress/
+  ingressClass: "nginx"
+  ingressClassResource:
+    name: nginx
+    enabled: true
+    default: false
+  service:
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+
+postgresql:
+  enabled: false # enable if not using rds from aws-impl
+  externaldbhost: null # This can be overridden during chart deployment
+  containerPorts:
+    postgresql: 5432
+  global:
+    postgresql:
+      auth:
+        username: "postgres"
+        password: "password"
+        database: "inferno"

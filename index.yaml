@@ -440,6 +440,17 @@ entries:
   inferno:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-12-17T03:33:00.164118417Z"
+    description: Inferno Helm Chart
+    digest: 2af5da8a87b8da42a2a87c17d1f9778bf3e10ed92a5220f3fe29eb0e01d91f01
+    icon: hhttps://static-00.iconduck.com/assets.00/fire-icon-1513x2048-1ztytpky.png
+    name: inferno
+    type: application
+    urls:
+    - https://github.com/Kinnexus-AU/helm-charts/releases/download/inferno-0.2.4/inferno-0.2.4.tgz
+    version: 0.2.4
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2025-12-17T03:24:41.391432853Z"
     description: Inferno Helm Chart
     digest: 28ac9eab14ae0f2cf66d608cd9067db3ab71128721bd7ca29faf21d7984c42e4
@@ -505,4 +516,4 @@ entries:
     urls:
     - https://github.com/Aidbox/helm-charts/releases/download/mpi-0.1.0/mpi-0.1.0.tgz
     version: 0.1.0
-generated: "2025-12-17T03:24:41.391567735Z"
+generated: "2025-12-17T03:33:00.164215498Z"

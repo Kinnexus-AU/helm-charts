@@ -11,3 +11,6 @@ data:
   POSTGRES_USER: {{ .Values.postgresql.global.postgresql.auth.username | quote }}
   {{- end }}
   POSTGRES_PORT: {{ .Values.postgresql.containerPorts.postgresql | quote }}
+  PGSSLROOTCERT: /certs/root.crt
+  PGSSLCERT: /certs/client-cert.pem
+  PGSSLKEY: /certs/client-key.pem

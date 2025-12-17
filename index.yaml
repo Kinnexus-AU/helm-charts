@@ -437,6 +437,18 @@ entries:
     urls:
     - https://github.com/Aidbox/helm-charts/releases/download/auditbox-0.1.0/auditbox-0.1.0.tgz
     version: 0.1.0
+  inferno-helmd:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-12-17T00:44:51.525912645Z"
+    description: Inferno Helm Chart
+    digest: 00b92fcbfb83c414b2ba237cbd11e58231274667b29f5b6e2967d848eeec0c40
+    icon: hhttps://static-00.iconduck.com/assets.00/fire-icon-1513x2048-1ztytpky.png
+    name: inferno-helmd
+    type: application
+    urls:
+    - https://github.com/Kinnexus-AU/helm-charts/releases/download/inferno-helmd-0.2.0/inferno-helmd-0.2.0.tgz
+    version: 0.2.0
   mpi:
   - apiVersion: v2
     appVersion: 1.0.0
@@ -448,4 +460,4 @@ entries:
     urls:
     - https://github.com/Aidbox/helm-charts/releases/download/mpi-0.1.0/mpi-0.1.0.tgz
     version: 0.1.0
-generated: "2025-08-07T02:09:36.577892218Z"
+generated: "2025-12-17T00:44:51.526029452Z"

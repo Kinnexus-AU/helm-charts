@@ -22,12 +22,6 @@ spec:
           secret:
             secretName: cloud-postgres-cert
             defaultMode: 0600
-        - name: examplenginx-config
-          configMap:
-            name: nginx-config
-            items:
-              - key: nginx.conf
-                path: nginx.conf
       initContainers:
       - name: run-migrations
         image: {{ .Values.inferno.imageUrl }}
@@ -74,12 +68,3 @@ spec:
           limits:
             memory: "2.5Gi"     # Maximum memory usage allowed
             cpu: "1"       # Maximum CPU usage allowed
-      - name: nginx
-        image: {{ .Values.nginx.platformImageUri }}
-        imagePullPolicy: Always
-        ports:
-          - containerPort: 80
-        volumeMounts:
-          - name: examplenginx-config
-            mountPath: /etc/nginx/nginx.conf
-            subPath: nginx.conf

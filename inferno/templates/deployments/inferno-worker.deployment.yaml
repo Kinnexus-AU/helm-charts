@@ -21,7 +21,7 @@ spec:
       - name: postgres-cert-source
         secret:
           secretName: cloud-postgres-cert
-          defaultMode: 438 #"0666"
+          defaultMode: 0600
       containers:
       - name: inferno-worker
         image: {{ .Values.inferno.imageUrl }}

@@ -17,18 +17,27 @@ spec:
     spec:
       nodeSelector:
         kubernetes.io/arch: amd64
+      volumes:
+      - name: postgres-cert-source
+        secret:
+          secretName: cloud-postgres-cert
+          defaultMode: 438 #"0666"
       containers:
       - name: inferno-worker
         image: {{ .Values.inferno.imageUrl }}
         command: ["bundle", "exec", "sidekiq", "-r", "./worker.rb"]
         imagePullPolicy: Always
+        volumeMounts:
+        - name: postgres-cert-source
+          mountPath: /certs
+          readOnly: true
         envFrom:
         - configMapRef:
             name: inferno
         - configMapRef:
             name: postgresql-configmap
         - secretRef:
-            name: postgresql-secret        
+            name: postgresql-secret
         resources:
           requests: # defaults to 1m CPU and 2919Mi Memory if not specified, might be a memory leak since it tries to consume all memory on node
             memory: "512Mi"   # Minimum memory required for scheduling
@@ -36,4 +45,3 @@ spec:
           limits:
             memory: "1Gi"     # Maximum memory usage allowed
             cpu: "500m"       # Maximum CPU usage allowed
- 
